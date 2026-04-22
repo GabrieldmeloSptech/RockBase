@@ -1,0 +1,344 @@
+
+.navbar-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fdf6f0;
+  text-decoration: none;
+}
+
+.navbar-logo span {
+  color: #ffba20;
+}
+
+#navbar .navbar-container ul li a {
+  color: #fdf6f0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+#navbar .navbar-container ul li a:hover {
+  color: #ffba20;
+}
+
+
+.banda-painel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 48px;
+  padding: 60px 10%;
+  background-color: #1e1b1b;
+  border-bottom: 1px solid #2a2424;
+}
+
+.banda-painel__img-wrap {
+  flex-shrink: 0;
+}
+
+.banda-painel__img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #2a2424;
+}
+
+.banda-painel__info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.banda-painel__genero {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #aa1111;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.banda-painel__nome {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #fdf6f0;
+  line-height: 1;
+}
+
+.banda-painel__meta {
+  font-size: 0.85rem;
+  color: #645a5b;
+  letter-spacing: 0.04em;
+}
+
+.banda-painel__desc {
+  font-size: 0.95rem;
+  color: #c9b8ad;
+  line-height: 1.8;
+  max-width: 560px;
+}
+
+.banda-painel__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.banda-tag {
+  font-size: 0.72rem;
+  color: #ffba20;
+  background: rgba(255, 186, 32, 0.08);
+  border: 1px solid rgba(255, 186, 32, 0.25);
+  padding: 4px 12px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+}
+
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fdf6f0;
+  margin-bottom: 24px;
+  padding-left: 16px;
+  border-left: 4px solid #aa1111;
+}
+
+
+.integrantes {
+  padding: 50px 10%;
+  background-color: #1e1b1b;
+  border-bottom: 1px solid #2a2424;
+}
+
+.integrantes__grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.membro-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 150px;
+  padding: 16px 12px;
+  background-color: #2a2424;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.membro-card:hover {
+  background-color: #332c2c;
+}
+
+.membro-card__foto-wrap {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #aa1111;
+  flex-shrink: 0;
+}
+
+.membro-card__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.membro-card__nome {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #fdf6f0;
+  text-align: center;
+}
+
+.membro-card__instrumento {
+  font-size: 0.75rem;
+  color: #645a5b;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+
+.albuns {
+  padding: 50px 10%;
+  background-color: #1e1b1b;
+}
+
+.albuns__carousel {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: #645a5b #2a2424;
+}
+
+.albuns__carousel::-webkit-scrollbar {
+  height: 4px;
+}
+
+.albuns__carousel::-webkit-scrollbar-track {
+  background: #2a2424;
+  border-radius: 4px;
+}
+
+.albuns__carousel::-webkit-scrollbar-thumb {
+  background: #645a5b;
+  border-radius: 4px;
+}
+
+
+.flip-card {
+  width: 180px;
+  height: 240px;
+  flex-shrink: 0;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.55s ease;
+}
+
+.flip-card:hover .flip-card__inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card__frente,
+.flip-card__verso {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+}
+
+.flip-card__frente {
+  background-color: #2a2424;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card__frente img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.flip-card__titulo {
+  padding: 10px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fdf6f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.flip-card__verso {
+  background-color: #aa1111;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 16px;
+  gap: 10px;
+}
+
+.flip-card__verso-titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fdf6f0;
+  line-height: 1.2;
+}
+
+.flip-card__verso-ano {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(253, 246, 240, 0.6);
+  letter-spacing: 0.08em;
+}
+
+.flip-card__verso-desc {
+  font-size: 0.78rem;
+  color: rgba(253, 246, 240, 0.85);
+  line-height: 1.6;
+}
+
+
+.footer-logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fdf6f0;
+}
+
+.footer-logo span {
+  color: #ffba20;
+}
+
+#footer .footer-content a {
+  color: #fdf6f0;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+#footer .footer-content a:hover {
+  color: #ffba20;
+}
+
+#footer .footer-info {
+  display: flex;
+  justify-content: center;
+  width: 60%;
+  margin: auto;
+  font-size: 0.75rem;
+  color: #645a5b;
+  padding-top: 30px;
+}
+
+
+@media (max-width: 768px) {
+  .banda-painel {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 6%;
+    gap: 24px;
+  }
+
+  .banda-painel__img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .banda-painel__nome {
+    font-size: 2.4rem;
+  }
+
+  .integrantes,
+  .albuns {
+    padding: 32px 6%;
+  }
+
+  .integrantes__grid {
+    gap: 12px;
+  }
+
+  .membro-card {
+    width: 130px;
+  }
+}
