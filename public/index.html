@@ -175,11 +175,18 @@
     </footer>
 </body>
 <script>
-    document.getElementById('ola').innerHTML =  'Olá ' + sessionStorage.NOME_USUARIO;
+
+     if (localStorage.getItem('logado') == 'true') {
+      document.getElementById('ola').innerHTML =  'Olá ' + sessionStorage.NOME_USUARIO;
+      
+    }
+
+
+    
         function Sair() {
         localStorage.removeItem('logado')
         window.location.href = 'index.html'
-        document.getElementById('ola').innerHTML =  'Olá ' + sessionStorage.NOME_USUARIO;
+        
     }
 
 </script>
