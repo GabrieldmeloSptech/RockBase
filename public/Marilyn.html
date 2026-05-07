@@ -184,33 +184,12 @@
   <script>
 
     var perguntas = [
-      {
-        pergunta: "Em que cidade o Nirvana foi formado?",
-        resposta: ["Seattle", "Aberdeen", "Portland", "San Francisco"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Qual foi o segundo álbum de estúdio do Nirvana?",
-        resposta: ["Bleach", "In Utero", "Nevermind", "Incesticide"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Quem era o baterista do Nirvana?",
-        resposta: ["Chad Channing", "Dave Grohl", "Aaron Burckhard", "Dan Peters"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Em que ano o Nirvana lançou Nevermind?",
-        resposta: ["1989", "1990", "1991", "1992"],
-        idcorreta: 2
-      },
-      {
-        pergunta: "Qual o nome da gravadora independente que lançou o primeiro álbum do Nirvana?",
-        resposta: ["DGC Records", "Sub Pop", "Geffen", "Epitaph"],
-        idcorreta: 1
-      }
-
-    ]
+    { pergunta: "Qual é o nome real de Marilyn Manson?", resposta: ["Brian Warner", "John Phillips", "Michael Jones", "David Smith"], idcorreta: 0 },
+    { pergunta: "Em que estado americano Marilyn Manson nasceu?", resposta: ["Califórnia", "Texas", "Ohio", "Florida"], idcorreta: 2 },
+    { pergunta: "Quem produziu o álbum Antichrist Superstar?", resposta: ["Rick Rubin", "Trent Reznor", "Bob Rock", "Ross Robinson"], idcorreta: 1 },
+    { pergunta: "Em que ano foi lançado Antichrist Superstar?", resposta: ["1994", "1995", "1996", "1997"], idcorreta: 2 },
+    { pergunta: "Qual álbum marcou a transição para o glam rock?", resposta: ["Antichrist Superstar", "Portrait of an American Family", "Mechanical Animals", "Holy Wood"], idcorreta: 2 }
+]
 
     if (localStorage.getItem('logado') !== 'true') {
       alert('Entre em sua conta para continuar.')
@@ -283,6 +262,30 @@
         document.getElementById('fim').innerHTML = 'Fim do quiz! Pontos: ' + pontos + ' ' + situacao
         document.getElementById('btn-reiniciar').style.display = 'block'
       }
+
+       if (perguntaAtual == perguntas.length) {
+      fetch('/pontuacao/salvar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idUsuario: sessionStorage.getItem('ID_USUARIO'),
+          banda: 'Marilyn Manson',
+          pontos: pontos
+        })
+      })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            console.log('Pontuação salva!')
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro)
+        })  
+      }
+
+
+
+
 
     }
 

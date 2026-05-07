@@ -210,33 +210,12 @@
   <script>
 
     var perguntas = [
-      {
-        pergunta: "Em que cidade o Nirvana foi formado?",
-        resposta: ["Seattle", "Aberdeen", "Portland", "San Francisco"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Qual foi o segundo álbum de estúdio do Nirvana?",
-        resposta: ["Bleach", "In Utero", "Nevermind", "Incesticide"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Quem era o baterista do Nirvana?",
-        resposta: ["Chad Channing", "Dave Grohl", "Aaron Burckhard", "Dan Peters"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Em que ano o Nirvana lançou Nevermind?",
-        resposta: ["1989", "1990", "1991", "1992"],
-        idcorreta: 2
-      },
-      {
-        pergunta: "Qual o nome da gravadora independente que lançou o primeiro álbum do Nirvana?",
-        resposta: ["DGC Records", "Sub Pop", "Geffen", "Epitaph"],
-        idcorreta: 1
-      }
-
-    ]
+    { pergunta: "Em que país o Led Zeppelin foi formado?", resposta: ["EUA", "Austrália", "Inglaterra", "Canadá"], idcorreta: 2 },
+    { pergunta: "Qual música é considerada o maior clássico do Led Zeppelin?", resposta: ["Kashmir", "Whole Lotta Love", "Black Dog", "Stairway to Heaven"], idcorreta: 3 },
+    { pergunta: "Quem era o baterista do Led Zeppelin?", resposta: ["John Paul Jones", "Jimmy Page", "John Bonham", "Robert Plant"], idcorreta: 2 },
+    { pergunta: "Em que ano o Led Zeppelin se dissolveu?", resposta: ["1975", "1977", "1980", "1982"], idcorreta: 2 },
+    { pergunta: "Qual instrumento Jimmy Page toca?", resposta: ["Bateria", "Baixo", "Vocal", "Guitarra"], idcorreta: 3 }
+]
 
     if (localStorage.getItem('logado') !== 'true') {
       alert('Entre em sua conta para continuar.')
@@ -310,6 +289,28 @@
         document.getElementById('fim').innerHTML = 'Fim do quiz! Pontos: ' + pontos + ' ' + situacao
         document.getElementById('btn-reiniciar').style.display = 'block'
       }
+
+       if (perguntaAtual == perguntas.length) {
+      fetch('/pontuacao/salvar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idUsuario: sessionStorage.getItem('ID_USUARIO'),
+          banda: 'Led Zeppelin',
+          pontos: pontos
+        })
+      })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            console.log('Pontuação salva!')
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro)
+        })  
+      }
+
+
 
     }
 

@@ -28,6 +28,9 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 
+var pontuacaoRoute = require('./src/routes/PontuacaoRoute')
+app.use('/pontuacao', pontuacaoRoute)
+
 app.listen(PORTA_APP, function () {
     console.log(`
     ##   ##  ######   #####             ####       ##     ######     ##              ##  ##    ####    ######  

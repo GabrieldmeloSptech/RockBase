@@ -67,6 +67,7 @@
                 resposta.json().then(json => {
                     sessionStorage.EMAIL_USUARIO = json.email
                     sessionStorage.NOME_USUARIO = json.nome
+                    sessionStorage.ID_USUARIO = json.id
                     setTimeout(() => window.location = "index.html", 1000)
                     mensagem.style.color =  `green`
                     mensagem.innerHTML = `Login feito com sucesso! redirecionando para a tela inicial.`

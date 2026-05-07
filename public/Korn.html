@@ -221,33 +221,12 @@
   <script>
 
     var perguntas = [
-      {
-        pergunta: "Em que cidade o Nirvana foi formado?",
-        resposta: ["Seattle", "Aberdeen", "Portland", "San Francisco"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Qual foi o segundo álbum de estúdio do Nirvana?",
-        resposta: ["Bleach", "In Utero", "Nevermind", "Incesticide"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Quem era o baterista do Nirvana?",
-        resposta: ["Chad Channing", "Dave Grohl", "Aaron Burckhard", "Dan Peters"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Em que ano o Nirvana lançou Nevermind?",
-        resposta: ["1989", "1990", "1991", "1992"],
-        idcorreta: 2
-      },
-      {
-        pergunta: "Qual o nome da gravadora independente que lançou o primeiro álbum do Nirvana?",
-        resposta: ["DGC Records", "Sub Pop", "Geffen", "Epitaph"],
-        idcorreta: 1
-      }
-
-    ]
+    { pergunta: "Em que cidade o Korn foi formado?", resposta: ["Los Angeles", "Seattle", "Bakersfield", "San Francisco"], idcorreta: 2 },
+    { pergunta: "Qual é o álbum de estreia do Korn?", resposta: ["Issues", "Follow the Leader", "Life is Peachy", "Korn"], idcorreta: 3 },
+    { pergunta: "Quem é o vocalista do Korn?", resposta: ["Brian Welch", "Jonathan Davis", "James Shaffer", "Ray Luzier"], idcorreta: 1 },
+    { pergunta: "Em que ano foi lançado Follow the Leader?", resposta: ["1994", "1996", "1998", "2000"], idcorreta: 2 },
+    { pergunta: "Qual instrumento incomum Jonathan Davis toca além de vocal?", resposta: ["Violino", "Trompete", "Gaita de Foles", "Acordeon"], idcorreta: 2 }
+]
 
 
     if (localStorage.getItem('logado') !== 'true') {
@@ -321,6 +300,29 @@
         document.getElementById('fim').innerHTML = 'Fim do quiz! Pontos: ' + pontos + ' ' + situacao
         document.getElementById('btn-reiniciar').style.display = 'block'
       }
+
+       if (perguntaAtual == perguntas.length) {
+      fetch('/pontuacao/salvar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idUsuario: sessionStorage.getItem('ID_USUARIO'),
+          banda: 'Korn',
+          pontos: pontos
+        })
+      })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            console.log('Pontuação salva!')
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro)
+        })  
+      }
+
+
+
 
     }
 

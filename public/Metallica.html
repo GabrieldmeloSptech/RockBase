@@ -211,33 +211,14 @@
   <script>
 
     var perguntas = [
-      {
-        pergunta: "Em que cidade o Nirvana foi formado?",
-        resposta: ["Seattle", "Aberdeen", "Portland", "San Francisco"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Qual foi o segundo álbum de estúdio do Nirvana?",
-        resposta: ["Bleach", "In Utero", "Nevermind", "Incesticide"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Quem era o baterista do Nirvana?",
-        resposta: ["Chad Channing", "Dave Grohl", "Aaron Burckhard", "Dan Peters"],
-        idcorreta: 1
-      },
-      {
-        pergunta: "Em que ano o Nirvana lançou Nevermind?",
-        resposta: ["1989", "1990", "1991", "1992"],
-        idcorreta: 2
-      },
-      {
-        pergunta: "Qual o nome da gravadora independente que lançou o primeiro álbum do Nirvana?",
-        resposta: ["DGC Records", "Sub Pop", "Geffen", "Epitaph"],
-        idcorreta: 1
-      }
+    { pergunta: "Em que cidade o Metallica foi formado?", resposta: ["Nova York", "Chicago", "Los Angeles", "Seattle"], idcorreta: 2 },
+    { pergunta: "Qual é o álbum mais vendido do Metallica?", resposta: ["Master of Puppets", "Kill Em All", "The Black Album", "Load"], idcorreta: 2 },
+    { pergunta: "Quem é o vocalista do Metallica?", resposta: ["Lars Ulrich", "Kirk Hammett", "Robert Trujillo", "James Hetfield"], idcorreta: 3 },
+    { pergunta: "Em que ano foi lançado Master of Puppets?", resposta: ["1983", "1984", "1986", "1988"], idcorreta: 2 },
+    { pergunta: "Qual o instrumento de Lars Ulrich?", resposta: ["Guitarra", "Bateria", "Baixo", "Vocal"], idcorreta: 1 }
+]
 
-    ]
+    
 
     if (localStorage.getItem('logado') !== 'true') {
       alert('Entre em sua conta para continuar.')
@@ -310,6 +291,30 @@
         document.getElementById('fim').innerHTML = 'Fim do quiz! Pontos: ' + pontos + ' ' + situacao
         document.getElementById('btn-reiniciar').style.display = 'block'
       }
+
+       if (perguntaAtual == perguntas.length) {
+      fetch('/pontuacao/salvar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idUsuario: sessionStorage.getItem('ID_USUARIO'),
+          banda: 'Metallica',
+          pontos: pontos
+        })
+      })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            console.log('Pontuação salva!')
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro)
+        })  
+      }
+
+
+
+
 
     }
 

@@ -315,6 +315,28 @@
         document.getElementById('btn-reiniciar').style.display = 'block'
       }
 
+       if (perguntaAtual == perguntas.length) {
+      fetch('/pontuacao/salvar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idUsuario: sessionStorage.getItem('ID_USUARIO'),
+          banda: 'Black Sabbath',
+          pontos: pontos
+        })
+      })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            console.log('Pontuação salva!')
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro)
+        })  
+      }
+
+
+
     }
 
     function Reiniciar(params) {

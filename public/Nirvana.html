@@ -317,6 +317,28 @@
         document.getElementById('fim').innerHTML = 'Fim do quiz! Pontos: ' + pontos + ' ' + situacao
         document.getElementById('btn-reiniciar').style.display = 'block'
       }
+      if (perguntaAtual == perguntas.length) {
+      fetch('/pontuacao/salvar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          idUsuario: sessionStorage.getItem('ID_USUARIO'),
+          banda: 'Nirvana',
+          pontos: pontos
+        })
+      })
+        .then(function (resposta) {
+          if (resposta.ok) {
+            console.log('Pontuação salva!')
+          }
+        })
+        .catch(function (erro) {
+          console.log(erro)
+        })  
+      }
+      
+
+
 
     }
 
