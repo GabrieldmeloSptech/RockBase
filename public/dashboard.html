@@ -54,20 +54,22 @@
       </div>
     </div>
 
+      <div class="div_paineis">
     <div class="dash-secao">
       <h2 class="dash-secao__titulo">Tentativas por banda</h2>
       <div class="grafico" id="grafico">
         <div class="grafico_linha"><canvas id="g1"></canvas></div>
       </div>
     </div>
-
+    
+    
  <div class="dash-secao">
     <h2 class="dash-secao__titulo">Top 5 - Maiores Pontuadores</h2>
     <div class="grafico_linha">
         <canvas id="chartRanking"></canvas>
     </div>
 </div>
-
+</div>
 
 
   </main>
@@ -130,7 +132,10 @@ function plotarGrafico(labels, valores) {
         options: {
             responsive: true,
             scales: {
-                y: { beginAtZero: true }
+                y: { beginAtZero: true, 
+                ticks: {color: '#c9b8ad'},
+                grid: { color: '#2a2424' }
+                },
             },
             plugins: {
                 legend: { labels: { color: '#fff', font: { family: 'Poppins' } } }

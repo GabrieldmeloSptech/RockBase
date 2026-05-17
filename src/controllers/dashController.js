@@ -1,43 +1,51 @@
-var dashModel = require("../models/dashModel")
+var DashModel = require('../models/DashModel')
 
+var DashController = {
 
+    listarPontuacao: function(req, res) {
+        DashModel.pontuacao_bandas()
+            .then(function(resultado) {
+                res.status(200).json(resultado)
+            })
+            .catch(function(erro) {
+                console.log(erro)
+                res.status(500).send('Erro ao listar pontuações')
+            })
+    },
 
+    tentativas: function(req, res) {
+        DashModel.tentativas()
+            .then(function(resultado) {
+                res.status(200).json(resultado)
+            })
+            .catch(function(erro) {
+                console.log(erro)
+                res.status(500).send('Erro ao buscar tentativas')
+            })
+    },
 
-function listarPontuacao(req, res) {
-    dashModel.pontuacao_bandas().then(function(resultado) {
-        res.status(200).json(resultado);
-    }).catch(function(erro) {
-        res.status(500).json(erro.sqlMessage);
-    });
+    somakpi: function(req, res) {
+        DashModel.somakpi()
+            .then(function(resultado) {
+                res.status(200).json(resultado)
+            })
+            .catch(function(erro) {
+                console.log(erro)
+                res.status(500).send('Erro ao calcular KPI')
+            })
+    },
+
+    partidaskpi: function(req, res) {
+        DashModel.partidaskpi()
+            .then(function(resultado) {
+                res.status(200).json(resultado)
+            })
+            .catch(function(erro) {
+                console.log(erro)
+                res.status(500).send('Erro ao buscar KPI de partidas')
+            })
+    }
+
 }
 
-function tentativas(req, res) {
-    dashModel.tentativas().then(function(resultado) {
-        res.status(200).json(resultado);
-    }).catch(function(erro) {
-        res.status(500).json(erro.sqlMessage);
-    });
-}
-
-function somakpi(req,res){
-    dashModel.somakpi().then(function(resultado) {
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage)
-})
-}
-
-function partidaskpi(req,res) {
-    dashModel.partidaskpi().then(function(resultado){
-        res.status(200).json(resultado);
-    }).catch(function(erro){
-        res.status(500).json(erro.sqlMessage)
-    })
-}
-
-module.exports = {
-    listarPontuacao,
-    tentativas,
-    somakpi,
-    partidaskpi
-}
+module.exports = DashController

@@ -64,12 +64,13 @@ font{
 
 #navbar{
     display: flex;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #1a1414;
     justify-content: center;
     color: white;
     position: fixed;
     top: 0;
     width: 100%;
+    border-bottom: #2a2424;
 }
 
 #navbar .navbar-container {
