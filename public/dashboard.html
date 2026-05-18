@@ -102,8 +102,19 @@
         .then(res => res.json())
         .then(dados => {
    
-            let labels = dados.map(item => item.banda);
-            let valores = dados.map(item => item.Tentativas);
+            let labels = []
+            let valores = []
+
+
+            for (let i = 0; i < dados.length; i++) {
+              let registro = dados[i];
+
+              labels.push(registro.banda)
+              valores.push(registro.Tentativas)
+
+              
+            }
+
             plotarGrafico(labels, valores);
         })
         .catch(err => console.error("Erro ao buscar dados:", err));
@@ -149,14 +160,17 @@ function carregarRanking() {
     fetch("/dashboard/pontuacao") 
         .then(res => res.json())
         .then(dados => {
-            const nomes = [];
-            const pontos = [];
+            let nomes = [];
+            let pontos = [];
 
             
-            dados.forEach(registro => {
-                nomes.push(registro.Jogador);
-                pontos.push(registro.Pontos);
-            });
+            for (let i = 0; i < dados.length; i++) {
+              
+                  let registro = dados[i]
+
+                  nomes.push(registro.Jogador)
+                  pontos.push(registro.Pontos)
+            }
             
             plotarGraficoRanking(nomes, pontos);
         })
@@ -204,11 +218,14 @@ fetch("/dashboard/somakpi")
 .then(res => res.json())
 .then(dados => {
   let total = 0
-  dados.forEach(registro =>{
+  
+      for (let i = 0; i < dados.length; i++) {
+        total = dados[i].Total
+        
+      }
 
-    total = registro.Total
     document.getElementById("total-pontos").innerHTML = total
-  })})  .catch(err => console.error("Erro na primeira kpi:", err));
+  })  .catch(err => console.error("Erro na primeira kpi:", err));
   
 
 }
@@ -217,13 +234,14 @@ function KPIdois(params) {
   fetch("/dashboard/partidaskpi")
   .then(res => res.json())
   .then(dados => {
-    let totalpartidas = 0
-    dados.forEach(registro => {
-
-      totalpartidas = registro.Abacate
-      document.getElementById("total-partidas").innerHTML = totalpartidas
-
-    })}).catch(err => console.error("Erro na segunda kpi:", err));
+      let total = 0
+      for (let i = 0; i < dados.length; i++) {
+        
+        total += dados[i].Abacate
+        
+      }
+      document.getElementById("total-partidas").innerHTML = total
+    }).catch(err => console.error("Erro na segunda kpi:", err));
   }
 
 /* Aqui acaba a parte das kpis e começa a parte do onload onde carrega a pagina antes do back e a questão do storage e fim. */
