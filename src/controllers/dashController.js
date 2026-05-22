@@ -44,7 +44,35 @@ var DashController = {
                 console.log(erro)
                 res.status(500).send('Erro ao buscar KPI de partidas')
             })
+    },
+
+
+    kpiusuario: function(req,res) {
+        var idUsuario = req.query.id;
+
+        DashModel.kpiusuario(idUsuario)
+        .then(function(resultado){
+           res.status(200).json(resultado)
+
+        }).catch(function(erro) {
+            console.log(erro)
+            res.status(500).send('Erro ao buscar KPI do usuário')
+        })
+    },
+
+
+    partidasusuario: function (req, res) {
+        var idUsuario = req.query.id;
+
+        DashModel.partidasusuario(idUsuario)
+        .then(function(resultado){
+            res.status(200).json(resultado)
+        }).catch(function (erro) {
+            console.log(erro)
+            res.status(500).send('Erro ao buscar a KPI das partidas do usuario')
+        })
     }
+
 
 }
 

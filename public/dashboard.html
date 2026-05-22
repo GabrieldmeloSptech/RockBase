@@ -37,19 +37,19 @@
 
     <div class="dash-cards">
       <div class="dash-card">
-        <span class="dash-card__label">Bandas</span>
-        <span class="dash-card__valor">7</span>
+        <span class="dash-card__label">Suas Partidas</span>
+        <span class="dash-card__valor" id="partidas">7</span>
       </div>
       <div class="dash-card">
-        <span class="dash-card__label">Álbuns</span>
-        <span class="dash-card__valor">29</span>
+        <span class="dash-card__label">Sua Pontuação</span>
+        <span id="pontosuser" class="dash-card__valor"></span>
       </div>
       <div class="dash-card">
         <span class="dash-card__label">Pontuação Total</span>
         <span class="dash-card__valor" id="total-pontos">—</span>
       </div>
       <div class="dash-card">
-        <span class="dash-card__label">Partidas</span>
+        <span class="dash-card__label">Partidas Totais</span>
         <span class="dash-card__valor" id="total-partidas">total</span>
       </div>
     </div>
@@ -244,6 +244,39 @@ function KPIdois(params) {
     }).catch(err => console.error("Erro na segunda kpi:", err));
   }
 
+  function kpiusuario(params) {
+
+    const id = sessionStorage.ID_USUARIO;
+
+    fetch(`/dashboard/kpiusuario?id=${id}`)
+    .then(res => res.json())
+    .then(dados => {
+      let pontos = 0
+      for (let i = 0; i < dados.length; i++) {
+        pontos = dados[i].pontuacao
+        
+      }
+      document.getElementById('pontosuser').innerHTML = pontos
+    }).catch(err => console.error("Erro na terceira kpi", err))
+  }
+
+  
+  function kpipartidas(params) {
+
+    const id = sessionStorage.ID_USUARIO;
+
+    fetch(`/dashboard/partidasusuario?id=${id}`)
+    .then(res => res.json())
+    .then(dados => {
+      let partida = 0
+      for (let i = 0; i < dados.length; i++) {
+        partida = dados[i].partidas
+        
+      }
+      document.getElementById('partidas').innerHTML = partida
+    }).catch(err => console.error("Erro na quarta kpi", err))
+  }
+
 /* Aqui acaba a parte das kpis e começa a parte do onload onde carrega a pagina antes do back e a questão do storage e fim. */
 
 
@@ -253,6 +286,8 @@ window.onload = () => {
     KPIum();
     KPIdois();
     log();
+    kpiusuario();
+    kpipartidas()
 };
 
 function log() {

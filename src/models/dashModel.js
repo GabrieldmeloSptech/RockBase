@@ -51,9 +51,30 @@ function partidaskpi(params) {
     console.log("Executando a instrução SQL: \n" + sql);
         return database.executar(sql);
 }
+
+    function kpiusuario(idUsuario) {
+        
+        var sql = `select sum(pontos) as pontuacao from Pontuacao where id_usuario = ${idUsuario}`
+
+        console.log("Executando a instrução SQL: \n" + sql);
+            return database.executar(sql);
+    }
+
+    function partidasusuario(idUsuario) {
+        
+        var sql = `select count(id_usuario) as partidas from Pontuacao where id_usuario = ${idUsuario}`
+
+        console.log("Executando a instrução SQL: \n" + sql);
+            return database.executar(sql);
+    }
+
+
+
 module.exports = {
     tentativas,
     pontuacao_bandas,
     somakpi,
-    partidaskpi
+    partidaskpi,
+    kpiusuario,
+    partidasusuario
 };

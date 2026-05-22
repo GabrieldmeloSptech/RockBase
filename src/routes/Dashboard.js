@@ -25,4 +25,14 @@ router.get("/partidaskpi", function (req,res){
 });
 
 
+router.get("/kpiusuario", function(req,res){
+
+    dashController.kpiusuario(req,res)
+})
+
+router.get("/partidasusuario", function(req,res){
+
+    dashController.partidasusuario(req,res)
+})
+
 module.exports = router;
