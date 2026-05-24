@@ -1,79 +1,78 @@
-var DashModel = require('../models/DashModel')
-
-var DashController = {
-
-    listarPontuacao: function(req, res) {
-        DashModel.pontuacao_bandas()
-            .then(function(resultado) {
-                res.status(200).json(resultado)
-            })
-            .catch(function(erro) {
-                console.log(erro)
-                res.status(500).send('Erro ao listar pontuações')
-            })
-    },
-
-    tentativas: function(req, res) {
-        DashModel.tentativas()
-            .then(function(resultado) {
-                res.status(200).json(resultado)
-            })
-            .catch(function(erro) {
-                console.log(erro)
-                res.status(500).send('Erro ao buscar tentativas')
-            })
-    },
-
-    somakpi: function(req, res) {
-        DashModel.somakpi()
-            .then(function(resultado) {
-                res.status(200).json(resultado)
-            })
-            .catch(function(erro) {
-                console.log(erro)
-                res.status(500).send('Erro ao calcular KPI')
-            })
-    },
-
-    partidaskpi: function(req, res) {
-        DashModel.partidaskpi()
-            .then(function(resultado) {
-                res.status(200).json(resultado)
-            })
-            .catch(function(erro) {
-                console.log(erro)
-                res.status(500).send('Erro ao buscar KPI de partidas')
-            })
-    },
+    var DashModel = require('../models/DashModel')
 
 
-    kpiusuario: function(req,res) {
-        var idUsuario = req.query.id;
+        function listarPontuacao(req, res) {
+            DashModel.pontuacao_bandas()
+                .then(function(resultado) {
+                    res.status(200).json(resultado)
+                })
+                .catch(function(erro) {
+                    console.log(erro)
+                    res.status(500).send('Erro ao listar pontuações')
+                })
+        }
 
-        DashModel.kpiusuario(idUsuario)
-        .then(function(resultado){
-           res.status(200).json(resultado)
+        function tentativas(req, res) {
+            DashModel.tentativas()
+                .then(function(resultado) {
+                    res.status(200).json(resultado)
+                })
+                .catch(function(erro) {
+                    console.log(erro)
+                    res.status(500).send('Erro ao buscar tentativas')
+                })
+        }
 
-        }).catch(function(erro) {
-            console.log(erro)
-            res.status(500).send('Erro ao buscar KPI do usuário')
-        })
-    },
+        function somakpi(req, res) {
+            DashModel.somakpi()
+                .then(function(resultado) {
+                    res.status(200).json(resultado)
+                })
+                .catch(function(erro) {
+                    console.log(erro)
+                    res.status(500).send('Erro ao calcular KPI')
+                })
+        }
+
+        function partidaskpi(req, res) {
+            DashModel.partidaskpi()
+                .then(function(resultado) {
+                    res.status(200).json(resultado)
+                })
+                .catch(function(erro) {
+                    console.log(erro)
+                    res.status(500).send('Erro ao buscar KPI de partidas')
+                })
+        }
 
 
-    partidasusuario: function (req, res) {
-        var idUsuario = req.query.id;
+        function kpiusuario(req,res) {
+            var idUsuario = req.query.id;
 
-        DashModel.partidasusuario(idUsuario)
-        .then(function(resultado){
+            DashModel.kpiusuario(idUsuario)
+            .then(function(resultado){
             res.status(200).json(resultado)
-        }).catch(function (erro) {
-            console.log(erro)
-            res.status(500).send('Erro ao buscar a KPI das partidas do usuario')
-        })
-    }
+
+            }).catch(function(erro) {
+                console.log(erro)
+                res.status(500).send('Erro ao buscar KPI do usuário')
+            })
+        }
 
 
-}
+        function partidasusuario(req, res) {
+            var idUsuario = req.query.id;
 
-module.exports = DashController
+            DashModel.partidasusuario(idUsuario)
+            .then(function(resultado){
+                res.status(200).json(resultado)
+            }).catch(function (erro) {
+                console.log(erro)
+                res.status(500).send('Erro ao buscar a KPI das partidas do usuario')
+            })
+        }
+
+
+
+
+    module.exports = {listarPontuacao, partidaskpi, partidasusuario, kpiusuario, tentativas, somakpi};
