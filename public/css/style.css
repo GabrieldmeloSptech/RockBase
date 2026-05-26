@@ -342,7 +342,6 @@ font{
 }
 
 #footer .footer-content .footer-menu .footer-menu-item:hover {
-	color: var(--default-green);
 	cursor: pointer;
 }
 

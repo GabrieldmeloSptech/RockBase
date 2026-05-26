@@ -241,8 +241,7 @@
   transform: rotateY(180deg);
 }
 
-.flip-card__frente,
-.flip-card__verso {
+.flip-card__frente, .flip-card__verso {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -343,41 +342,6 @@
   color: #645a5b;
   padding-top: 30px;
 }
-
-
-@media (max-width: 768px) {
-  .banda-painel {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 32px 6%;
-    gap: 24px;
-  }
-
-  .banda-painel__img {
-    width: 200px;
-    height: 200px;
-  }
-
-  .banda-painel__nome {
-    font-size: 2.4rem;
-  }
-
-  .integrantes,
-  .albuns {
-    padding: 32px 6%;
-  }
-
-  .integrantes__grid {
-    gap: 12px;
-  }
-
-  .membro-card {
-    width: 130px;
-  }
-}
-
-
-
 
 .quiz {
     padding: 50px 10%;

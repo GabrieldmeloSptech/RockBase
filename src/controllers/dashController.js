@@ -1,4 +1,4 @@
-    var DashModel = require('../models/DashModel')
+    var DashModel = require('../models/dashModel')
 
 
         function listarPontuacao(req, res) {
