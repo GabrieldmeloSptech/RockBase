@@ -22,15 +22,6 @@ gap: 16px;
     margin-bottom: 36px;
 }
 
-.dash-eyebrow {
-    font-size: 0.75rem;
-    color: #aa1111;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-family: monospace;
-    margin-bottom: 8px;
-}
-
 .dash-titulo {
     font-family: "Limelight", sans-serif;
     font-size: 2.2rem;
